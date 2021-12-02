@@ -53,3 +53,8 @@ variable "config_map_name" {
   type        = string
   description = "config_map_name"
 }
+
+variable "machine_type" {
+  type = string
+  description = "machine_type"
+}
