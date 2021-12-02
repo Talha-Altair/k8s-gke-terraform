@@ -9,12 +9,12 @@ variable "region" {
 }
 
 variable "creds_file_path" {
-  type = string
+  type        = string
   description = "creds_file_path"
 }
 
 variable "cluster_name" {
-  type = string
+  type        = string
   description = "cluster_name"
 }
 
