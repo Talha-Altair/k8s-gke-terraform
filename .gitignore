@@ -9,3 +9,5 @@
 *.tfvars
 
 creds.json
+
+configmap.yaml
