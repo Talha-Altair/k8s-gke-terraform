@@ -1,8 +1,8 @@
 resource "kubernetes_deployment_v1" "default" {
   metadata {
-    name = "${var.name}-deployment"
+    name = "${var.deployment_name}-deployment"
     labels = {
-      app = var.name
+      app = var.deployment_name
     }
     namespace = var.namespace
   }
@@ -13,21 +13,21 @@ resource "kubernetes_deployment_v1" "default" {
 
     selector {
       match_labels = {
-        app = var.name
+        app = var.deployment_name
       }
     }
 
     template {
       metadata {
         labels = {
-          app = var.name
+          app = var.deployment_name
         }
       }
 
       spec {
         container {
           image = var.image
-          name  = var.name
+          name  = var.deployment_name
           port {
             container_port = var.port
           }
@@ -39,7 +39,7 @@ resource "kubernetes_deployment_v1" "default" {
 
 resource "kubernetes_service" "simple-service" {
   metadata {
-    name      = "${var.name}-service"
+    name      = "${var.deployment_name}-service"
     namespace = var.namespace
   }
   spec {

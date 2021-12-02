@@ -24,36 +24,26 @@ variable "gke_num_nodes" {
 }
 
 variable "image" {
-
   type        = string
   description = "docker image URI"
-
 }
 
 variable "deployment_name" {
-
   type        = string
   description = "Name to identify service and deployment after provisioning"
-
 }
 
 variable "namespace" {
-
   type        = string
   description = "NameSPace in which resources shall be provisoned"
-
 }
 
 variable "port" {
-
   type        = string
   description = "docker container port"
-
 }
 
 variable "replicas" {
-
   type        = string
   description = "replicas of deployment pods"
-
 }
