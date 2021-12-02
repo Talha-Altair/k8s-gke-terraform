@@ -27,7 +27,6 @@ resource "kubernetes_deployment_v1" "default" {
 
       spec {
 
-
         container {
           image = var.image
           name  = var.deployment_name
@@ -45,33 +44,4 @@ resource "kubernetes_deployment_v1" "default" {
       }
     }
   }
-}
-
-resource "kubernetes_service" "default" {
-  metadata {
-    name      = "${var.deployment_name}-service"
-    namespace = var.namespace
-  }
-  spec {
-    selector = {
-      app = var.deployment_name
-    }
-    port {
-      port        = 80
-      target_port = var.port
-    }
-    type = "LoadBalancer"
-  }
-}
-
-resource "kubernetes_config_map" "default" {
-  metadata {
-    name = var.config_map_name
-  }
-
-  data = {
-    talha                = "altair"
-    "my_config_file.yml" = "${file(".env")}"
-  }
-
 }

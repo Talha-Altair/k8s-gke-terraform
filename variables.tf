@@ -36,6 +36,7 @@ variable "deployment_name" {
 variable "namespace" {
   type        = string
   description = "NameSPace in which resources shall be provisoned"
+  default = "default"
 }
 
 variable "port" {
