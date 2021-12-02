@@ -37,7 +37,7 @@ resource "kubernetes_deployment_v1" "default" {
   }
 }
 
-resource "kubernetes_service" "simple-service" {
+resource "kubernetes_service" "default" {
   metadata {
     name      = "${var.deployment_name}-service"
     namespace = var.namespace
