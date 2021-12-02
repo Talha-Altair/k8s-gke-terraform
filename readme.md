@@ -64,5 +64,5 @@ Number of Replicas in the Deployment
 
 ## config_map_name
 
-User Defined Name to be given to the configmap
+User Defined Name to be given to the configmap,
 Edit Configmap.tf to your liking
