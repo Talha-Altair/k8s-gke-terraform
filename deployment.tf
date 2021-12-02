@@ -24,10 +24,20 @@ resource "kubernetes_deployment_v1" "default" {
         }
       }
 
+
       spec {
+
+
         container {
           image = var.image
           name  = var.deployment_name
+
+          env_from {
+            config_map_ref {
+              name = var.config_map_name
+            }
+          }
+
           port {
             container_port = var.port
           }
@@ -52,4 +62,16 @@ resource "kubernetes_service" "default" {
     }
     type = "LoadBalancer"
   }
+}
+
+resource "kubernetes_config_map" "default" {
+  metadata {
+    name = var.config_map_name
+  }
+
+  data = {
+    talha = "altair"
+    "my_config_file.yml" = file(".env")
+  }
+
 }

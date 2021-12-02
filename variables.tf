@@ -47,3 +47,8 @@ variable "replicas" {
   type        = string
   description = "replicas of deployment pods"
 }
+
+variable "config_map_name" {
+  type = string
+  description = "config_map_name"
+}

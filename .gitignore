@@ -11,3 +11,5 @@
 creds.json
 
 configmap.yaml
+
+.env
