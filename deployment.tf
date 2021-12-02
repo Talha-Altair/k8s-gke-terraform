@@ -1,35 +1,35 @@
 resource "kubernetes_deployment_v1" "default" {
   metadata {
-    name = "terraform-nginx-example"
+    name = "${var.name}-deployment"
     labels = {
-      test = "nginx"
+      app = var.name
     }
     namespace = var.namespace
   }
 
   spec {
 
-    replicas = 3
+    replicas = var.replicas
 
     selector {
       match_labels = {
-        test = "nginx"
+        app = var.name
       }
     }
 
     template {
       metadata {
         labels = {
-          test = "nginx"
+          app = var.name
         }
       }
 
       spec {
         container {
-          image = "docker.io/nginx"
-          name  = "nginx"
+          image = var.image
+          name  = var.name
           port {
-            container_port = 80
+            container_port = var.port
           }
         }
       }
@@ -37,18 +37,18 @@ resource "kubernetes_deployment_v1" "default" {
   }
 }
 
-resource "kubernetes_service" "default" {
+resource "kubernetes_service" "simple-service" {
   metadata {
-    name      = "nginx-service-example"
+    name      = "${var.name}-service"
     namespace = var.namespace
   }
   spec {
     selector = {
-      test = "nginx"
+      app = var.name
     }
     port {
       port        = 80
-      target_port = 80
+      target_port = var.port
     }
     type = "LoadBalancer"
   }
