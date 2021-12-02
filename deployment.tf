@@ -70,8 +70,8 @@ resource "kubernetes_config_map" "default" {
   }
 
   data = {
-    talha = "altair"
-    "my_config_file.yml" = file(".env")
+    talha                = "altair"
+    "my_config_file.yml" = "${file(".env")}"
   }
 
 }

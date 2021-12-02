@@ -49,6 +49,6 @@ variable "replicas" {
 }
 
 variable "config_map_name" {
-  type = string
+  type        = string
   description = "config_map_name"
 }
