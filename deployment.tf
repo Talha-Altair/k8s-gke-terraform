@@ -44,7 +44,7 @@ resource "kubernetes_service" "default" {
   }
   spec {
     selector = {
-      app = var.name
+      app = var.deployment_name
     }
     port {
       port        = 80
